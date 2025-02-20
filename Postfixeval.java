@@ -114,12 +114,16 @@ class evalpostfix {
             }
         }
 
-        int res_val = st.pop();
-        if (!st.isEmpty()) {
-            return -1;
-        } else {
-            return res_val;
-        }
+         int res_val=st.pop();
+
+
+       if(st.isEmpty())
+
+
+       return res_val;
+
+
+       else return -1;
     }
 }
 
