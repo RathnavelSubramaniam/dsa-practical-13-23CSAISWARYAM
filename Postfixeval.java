@@ -75,17 +75,63 @@ class evalpostfix
     {
         postfix = str;
     }
-    public boolean isOperand(char ch) 
+public boolean isOperand(char ch) 
     {
-     
-    // TYPE YOUR CODE CODE
-       
+        if (ch >= '0' && ch <= '9')
+            return true;
+        else
+            return false;
     }
-    public int eval() 
+public int eval() 
     {
-         // TYPE YOUR CODE CODE
-        
-     }
+        char po[] = postfix.toCharArray();
+        int i = 0, a, b;
+        while (i < po.length) 
+        {
+            if (isOperand(po[i]))
+                st.push(po[i] - '0');
+            else
+            { 
+              //  st.display();
+                a = st.pop();
+                b = st.pop();
+            //   System.out.println("a:"+a);
+              //  System.out.println("b:"+b);
+               if((a!=-1)&&(b!=-1))
+               {
+                switch (po[i]) 
+                {
+                    case '+':
+                        st.push(a + b);
+                        break;
+                    case '-':
+                        st.push(b - a);
+                        break;
+                    case '*':
+                        st.push(a * b);
+                        break;
+                    case '/':
+                        st.push(b / a);
+                        break;
+                    case '%':
+                        st.push(b % a);
+                        break;
+                    default: 
+                    break;
+                }
+
+            }
+          else
+          return -1;
+            }
+            i++;
+        }
+       int res_val=st.pop();
+       if(st.isEmpty())
+       return res_val;
+       else return -1;
+    }
+}
 public class Postfixeval 
 {
     public static void main(String[] args) 
